@@ -4,25 +4,26 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Empregado {
 	
   public:
-    double salarioHora;  
-    double quotaMensalVendas;  
-
+    double salarioHora;
+    double quotaMensalVendas;
+    static constexpr int MESES_NO_ANO = 12;
+    static constexpr int MAXIMO_HORAS = 8;
+    string nome;    
 
     double pagamentoMes(double horasTrabalhadas) {
  
-      double t = horasTrabalhadas;
-	  
-	  //Cálculo de hora extra (+50% se horasTrabalhadas > 8)
-      if (horasTrabalhadas > 8) {
-        double x = horasTrabalhadas - 8;
-        t += x / 2;
-      }
-	  return t * salarioHora;
+     double t = horasTrabalhadas;
+        if (horasTrabalhadas > MAXIMO_HORAS) {
+            double aux = horasTrabalhadas - MAXIMO_HORAS;
+            t += aux / 2;
+        }
+        return t * salarioHora;
     }
 	
 };
-
 #endif
